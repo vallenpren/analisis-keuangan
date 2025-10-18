@@ -1,0 +1,149 @@
+/* === Background Elegan === */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-image: url("back.jpg"); /* gambar di folder static */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin: 30px;
+    color: #fff;
+    position: relative;
+    z-index: 0;
+}
+
+/* === Overlay gelap transparan agar teks & elemen kontras === */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* gelap lembut */
+    z-index: -1;
+    backdrop-filter: blur(6px); /* efek buram background */
+}
+
+/* === Judul === */
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+/* === Form === */
+form {
+    text-align: center;
+    margin: 10px 0;
+}
+
+input, button {
+    padding: 8px 12px;
+    margin: 4px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    backdrop-filter: blur(4px);
+    transition: 0.3s;
+}
+
+input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+button {
+    background: rgba(76,175,80,0.8);
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    opacity: 0.9;
+    transform: scale(1.03);
+}
+button.danger {
+    background: rgba(244,67,54,0.8);
+}
+
+/* === Table (Frosted Glass Style) === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    backdrop-filter: blur(8px);
+}
+th {
+    background: rgba(76,175,80,0.8);
+    color: #fff;
+    padding: 10px;
+    text-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+}
+tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.05);
+}
+
+/* === Grafik Card (Glass Style) === */
+.grafik-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.grafik-card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    width: 32%;
+    min-width: 300px;
+    box-sizing: border-box;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(12px);
+}
+
+.grafik-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+}
+
+.grafik-card h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+
+.chart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.chart-wrapper canvas {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* === Animasi Masuk === */
+.fade-in {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 1s ease forwards;
+}
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}

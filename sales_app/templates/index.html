@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 Sales Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1>📊 Sales Dashboard</h1>
+
+<section class="grafik-grid">
+    <div class="grafik-card fade-in">
+        <h3>💵 Pendapatan</h3>
+        <div class="chart-wrapper"><canvas id="chartPendapatan"></canvas></div>
+    </div>
+    <div class="grafik-card fade-in">
+        <h3>💰 Laba Bersih</h3>
+        <div class="chart-wrapper"><canvas id="chartLaba"></canvas></div>
+    </div>
+    <div class="grafik-card fade-in">
+        <h3>📊 Distribusi Normal (Laba)</h3>
+        <div class="chart-wrapper"><canvas id="chartDistribusi"></canvas></div>
+    </div>
+</section>
+
+<section class="form-section">
+    <form method="POST">
+        <input type="date" name="tanggal" required>
+        <input type="text" name="produk" placeholder="Nama Produk">
+        <input type="number" name="harga" placeholder="Harga Jual">
+        <input type="number" name="biaya_prod" placeholder="Biaya Produksi">
+        <input type="number" name="biaya_iklan" placeholder="Biaya Iklan">
+        <input type="number" name="terjual" placeholder="Terjual">
+        <input type="number" name="biaya_ops" placeholder="Biaya Ops">
+        <button type="submit" name="action" value="Tambah">➕ Tambah</button>
+    </form>
+</section>
+
+<section class="update-delete">
+<h3>🔁 Update / 🗑 Hapus Data</h3>
+<form method="POST">
+    <input type="number" name="id_update" placeholder="ID Update">
+    <input type="text" name="produk_update" placeholder="Nama Produk">
+    <input type="number" name="harga_update" placeholder="Harga">
+    <input type="number" name="biaya_prod_update" placeholder="Biaya Produksi">
+    <input type="number" name="biaya_iklan_update" placeholder="Biaya Iklan">
+    <input type="number" name="terjual_update" placeholder="Terjual">
+    <input type="number" name="biaya_ops_update" placeholder="Biaya Ops">
+    <button type="submit" name="action" value="Update">Update</button>
+</form>
+
+<form method="POST">
+    <input type="number" name="id_hapus" placeholder="ID Hapus">
+    <button type="submit" name="action" value="Hapus" class="danger">Hapus</button>
+</form>
+</section>
+
+<section class="table-section">
+<h3>📋 Data Transaksi</h3>
+<table>
+<tr>
+    {% for col in data[0].keys() %}
+    <th>{{ col }}</th>
+    {% endfor %}
+</tr>
+{% for row in data %}
+<tr>
+    {% for val in row.values() %}
+    <td>{{ val }}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+</table>
+</section>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
